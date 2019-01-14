@@ -16,12 +16,12 @@ ActiveRecord::Schema.define(version: 2019_01_14_203728) do
   enable_extension "plpgsql"
 
   create_table "offers", force: :cascade do |t|
-    t.string "title", null: false
-    t.text "description", null: false
-    t.string "area", null: false
-    t.string "address", null: false
-    t.integer "price", null: false
-    t.integer "phone", null: false
+    t.string "title"
+    t.text "description"
+    t.string "area"
+    t.string "address"
+    t.integer "price"
+    t.integer "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
