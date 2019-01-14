@@ -17,3 +17,14 @@ o_2.save
 o_3.save
 o_4.save
 o_5.save
+
+user_1 = User.new(email: "test@test.pl", password: "123456", admin: false)
+user_2 = User.new(email: "admin@admin.pl", password: "qwerty", admin: true)
+user_1.save
+user_2.save
+
+user_1.offers << o_1
+user_1.offers << o_2
+user_1.offers << o_3
+user_2.offers << o_4
+user_2.offers << o_5
