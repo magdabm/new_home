@@ -4,12 +4,12 @@ class OffersController < ApplicationController
     @offers = Offer.all
   end
 
-  def new
-    @offer = Offer.new
-  end
-
   def show
     @offer = Offer.find(params[:id])
+  end
+
+  def new
+    @offer = Offer.new
   end
 
   def create
@@ -22,10 +22,23 @@ class OffersController < ApplicationController
   end
 
   def edit
+    @offer = Offer.find(params[:id])
   end
 
+  def update
+    @offer = Offer.find(params[:id])
+    if @offer.update(offer_params)
+      redirect_to @offer
+    else
+      render 'edit'
+    end
+  end
 
-
+  def destroy
+    @offer = Offer.find(params[:id])
+    @offer.destroy
+    redirect_to offers_path
+  end
 
 
   private
