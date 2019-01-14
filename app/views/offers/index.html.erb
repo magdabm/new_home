@@ -1,6 +1,31 @@
 <br>
 <br>
 <h2>Current offers of apartments and houses for rent or for sale</h2>
+<br>
+<table>
+  <thead>
+    <tr>
+       <th> Title </th>
+       <th> Price </th>
+       <th> Area </th>
+       <th> Address </th>
+       <th></th>
+       <th></th>
+       <th></th>
+    </tr>
+
+    <% @offers.each do |offer| %>
+      <tr>
+        <td><strong><%= link_to "#{offer.title}", offer_path(offer) %></strong></td>
+        <td><%= offer.price %> </td>
+        <td><%= offer.area %> </td>
+        <td><%= offer.address %> </td>
+        <td><%= link_to 'Show details', offer_path(offer) %>
+        <td><small><%= link_to 'Edit', edit_offer_path(offer) %></small></td>
+        <td><small><%= link_to 'Delete', offer_path(offer), method: :delete, data: { confirm: "Are you sure you want to delete the offer?" }%></small></td>
+      </tr>
+    <% end %>
+</table>
 
 <br>
 <br>

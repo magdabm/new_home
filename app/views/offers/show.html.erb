@@ -1,0 +1,45 @@
+
+<div>
+
+  <br>
+  <br>
+  <strong><h2><p>
+    <%= @offer.title %>
+  </p></h2></strong>
+  <p>
+    Area (m2):
+    <i><%= @offer.area %></i>
+  </p>
+  <p>
+    Price for month (PLN):
+    <i><%= @offer.price %></i>
+  </p>
+  <p>
+    District or street:
+    <i><%= @offer.address %></i>
+  </p>
+  <p>
+    Description:
+    <i><%= @offer.description %></i>
+  </p>
+  <p>
+    Contact phone:
+    <i><%= @offer.phone %></i>
+  </p>
+
+  <small>
+    <%= link_to 'Edit', edit_offer_path(@offer) %>
+  </small>
+  <small>
+    <%= link_to 'Delete', offer_path(@offer), method: :delete, data: { confirm: "Are you sure you want to delete your offer?" }%>
+  </small>
+
+</div>
+
+  <br>
+  <br>
+<div>
+  <button>
+    <%= link_to 'Home page', offers_path %>
+  </button>
+</div>
