@@ -6,4 +6,9 @@ class User < ApplicationRecord
 
   has_many :offers
 
+
+  def admin?
+    admin
+  end
+
 end

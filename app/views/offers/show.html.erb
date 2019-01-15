@@ -26,14 +26,19 @@
     Contact phone:
     <i><%= @offer.phone %></i>
   </p>
+  <p><small>
+    Entry author:
+    <i><%= @offer.user.email %></i>
+  </small></p>
 
-  <small>
-    <%= link_to 'Edit', edit_offer_path(@offer) %>
-  </small>
-  <small>
-    <%= link_to 'Delete', offer_path(@offer), method: :delete, data: { confirm: "Are you sure you want to delete your offer?" }%>
-  </small>
-
+  <% if @offer.user == current_user || current_user&.admin? %>
+    <small>
+      <%= link_to 'Edit', edit_offer_path(@offer) %>
+    </small>
+    <small>
+      <%= link_to 'Delete', offer_path(@offer), method: :delete, data: { confirm: "Are you sure you want to delete your offer?" } %>
+    </small>
+  <% end %>
 </div>
 
   <br>

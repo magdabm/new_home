@@ -16,8 +16,10 @@ class OffersController < ApplicationController
 
   def create
     @offer = Offer.new(offer_params)
+    @offer.user = current_user if current_user
     if @offer.save
       redirect_to @offer
+      flash[:notice] = "Advertisement has been succesfully added to our database."
     else
       render 'new'
     end
@@ -25,21 +27,35 @@ class OffersController < ApplicationController
 
   def edit
     @offer = Offer.find(params[:id])
+    if @offer.user != current_user && !current_user&.admin?
+      redirect_to offers_path
+      flash[:alert] = "You are not allowed to be here."
+   end
   end
 
   def update
     @offer = Offer.find(params[:id])
-    if @offer.update(offer_params)
-      redirect_to @offer
+    if @offer.user != current_user && !current_user&.admin?
+      redirect_to offers_path
+      flash[:alert] = "You are not allowed to be here."
     else
-      render 'edit'
+      @offer.update(offer_params)
+      redirect_to @offer
+      flash[:notice] = "Advertisement has been succesfully updated in our database."
     end
   end
 
   def destroy
     @offer = Offer.find(params[:id])
-    @offer.destroy
-    redirect_to offers_path
+    if @offer.user != current_user && !current_user&.admin?
+      redirect_to offers_path
+      flash[:alert] = "You are not allowed to be here."
+      false
+    else
+      @offer.destroy
+      redirect_to offers_path
+      flash[:notice] = "Advertisement has been succesfully deleted from our database."
+    end
   end
 
 

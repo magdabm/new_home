@@ -21,8 +21,10 @@
         <td><%= offer.area %> </td>
         <td><%= offer.address %> </td>
         <td><%= link_to 'Show details', offer_path(offer) %>
-        <td><small><%= link_to 'Edit', edit_offer_path(offer) %></small></td>
-        <td><small><%= link_to 'Delete', offer_path(offer), method: :delete, data: { confirm: "Are you sure you want to delete the offer?" }%></small></td>
+        <% if offer.user == current_user || current_user&.admin? %>
+          <td><small><%= link_to 'Edit', edit_offer_path(offer) %></small></td>
+          <td><small><%= link_to 'Delete', offer_path(offer), method: :delete, data: { confirm: "Are you sure you want to delete the offer?" } %></small></td>
+        <% end %>
       </tr>
     <% end %>
 </table>
