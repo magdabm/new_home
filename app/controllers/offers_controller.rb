@@ -1,13 +1,14 @@
 class OffersController < ApplicationController
 
   before_action :authenticate_user!, except: [:show, :index]
+  before_action :find_offer, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_offer, only: [:edit, :update, :destroy]
 
   def index
     @offers = Offer.all
   end
 
   def show
-    @offer = Offer.find(params[:id])
   end
 
   def new
@@ -26,36 +27,19 @@ class OffersController < ApplicationController
   end
 
   def edit
-    @offer = Offer.find(params[:id])
-    if @offer.user != current_user && !current_user&.admin?
-      redirect_to offers_path
-      flash[:alert] = "You are not allowed to be here."
-   end
   end
 
   def update
-    @offer = Offer.find(params[:id])
-    if @offer.user != current_user && !current_user&.admin?
-      redirect_to offers_path
-      flash[:alert] = "You are not allowed to be here."
-    else
-      @offer.update(offer_params)
+    if @offer.update(offer_params)
       redirect_to @offer
       flash[:notice] = "Advertisement has been succesfully updated in our database."
     end
   end
 
   def destroy
-    @offer = Offer.find(params[:id])
-    if @offer.user != current_user && !current_user&.admin?
-      redirect_to offers_path
-      flash[:alert] = "You are not allowed to be here."
-      false
-    else
       @offer.destroy
       redirect_to offers_path
       flash[:notice] = "Advertisement has been succesfully deleted from our database."
-    end
   end
 
 
@@ -63,6 +47,20 @@ class OffersController < ApplicationController
 
   def offer_params
     params.require(:offer).permit(:title, :area, :address, :price, :phone, :description)
+  end
+
+  def find_offer
+    @offer = Offer.find(params[:id])
+  end
+
+  def authorize_offer
+    if @offer.user != current_user && !current_user&.admin?
+      redirect_to offers_path
+      flash[:alert] = "You are not allowed to be here."
+      false
+    else
+      true
+    end
   end
 
 end
