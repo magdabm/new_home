@@ -5,17 +5,19 @@
 <table>
   <thead>
     <tr>
-       <th> Title </th>
-       <th> Price in PLN for month</th>
-       <th> Area in m2</th>
-       <th> District or street </th>
-       <th></th>
-       <th></th>
-       <th></th>
+      <th> Purpose </th>
+      <th> Title </th>
+      <th> Price in PLN for month</th>
+      <th> Area in m2</th>
+      <th> District or street </th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
 
     <% @offers.each do |offer| %>
       <tr>
+        <td><%= offer.status %></td> 
         <td><strong><%= link_to "#{offer.title}", offer_path(offer) %></strong></td>
         <td><%= offer.price %> </td>
         <td><%= offer.area %> </td>

@@ -2,48 +2,7 @@
 
 <h1>Edit an advertisement:</h1>
 
-<% if @offer.errors.any? %>
-  <div>
-    <h4>
-      <%= pluralize(@offer.errors.count, 'error') %> prohibited this advertisement from being saved:
-    </h4>
-    <ul>
-      <% @offer.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<%= form_for @offer do |f| %>
-  <p>
-     <%= f.label :title %><br>
-     <%= f.text_area :title %>
-  </p>
-  <p>
-     <%= f.label :area, "Area in square metres:" %><br>
-     <%= f.text_field :area %>
-  </p>
-  <p>
-     <%= f.label :address, "Enter the street or district:" %><br>
-     <%= f.text_field :address %>
-  </p>
-  <p>
-     <%= f.label :price, "Price in PLN for month:" %><br>
-     <%= f.text_field :price %>
-  </p>
-  <p>
-     <%= f.label :phone, "Contact number:" %><br>
-     <%= f.text_field :phone %>
-  <p>
-     <%= f.label :description %><br>
-     <%= f.text_area :description %>
-  </p>
-  <p>
-     <%= f.submit %>
-  </p>
-<% end %>
-
+<%= render 'form' %>
 <br>
 <br>
 <%= link_to 'Back to all offers', offers_path %>

@@ -3,9 +3,14 @@
 
   <br>
   <br>
+
   <strong><h2><p>
     <%= @offer.title %>
   </p></h2></strong>
+  <p>
+     Purpose:
+     <%= link_to @offer.status, offers_path(:status) %>
+  </p>
   <p>
     Area (m2):
     <i><%= @offer.area %></i>
