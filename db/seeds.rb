@@ -28,3 +28,36 @@ user_1.offers << o_2
 user_1.offers << o_3
 user_2.offers << o_4
 user_2.offers << o_5
+
+room_1 = Room.new(room: "hall")
+room_2 = Room.new(room: "living_room")
+room_3 = Room.new(room: "bedroom")
+room_4 = Room.new(room: "bedroom2")
+room_5 = Room.new(room: "bedroom3")
+room_6 = Room.new(room: "kitchen")
+room_7 = Room.new(room: "bathroom")
+room_8 = Room.new(room: "toilet")
+room_9 = Room.new(room: "wardrobe")
+room_10 = Room.new(room: "pantry")
+room_11 = Room.new(room: "mezzanine")
+room_12 = Room.new(room: "terrace")
+room_13 = Room.new(room: "balcony")
+room_14 = Room.new(room: "basement")
+room_15 = Room.new(room: "own parking space")
+room_16 = Room.new(room: "garden")
+room_1.save
+room_2.save
+room_3.save
+room_4.save
+room_5.save
+room_6.save
+room_7.save
+room_8.save
+room_9.save
+room_10.save
+room_11.save
+room_12.save
+room_13.save
+room_14.save
+room_15.save
+room_16.save

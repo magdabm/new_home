@@ -11,6 +11,7 @@ class OffersController < ApplicationController
   end
 
   def show
+    @question = Question.new
   end
 
   def new
