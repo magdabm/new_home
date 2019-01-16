@@ -20,6 +20,12 @@
     <i><%= @offer.price %></i>
   </p>
   <p>
+     Rooms:
+     <% @offer.rooms.each do |r| %>
+        <%= r.room %> |
+     <% end %>
+  </p>
+  <p>
     District or street:
     <i><%= @offer.address %></i>
   </p>

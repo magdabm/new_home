@@ -1,2 +1,20 @@
 <br><br><br><br><br>
-<h1 align="center">Welcome at NEW HOME website !!!</h3>
+<div align="center">
+
+  <h2 align="center"> Welcome at NEW HOME website </h2>
+
+  <h2> Find with us your new home! </h2>
+  <br><br>
+  <h3> What do you want to look at? </h3>
+
+  <h3> Apartments: </h3>
+    <h3>
+      <%= link_to "FOR SALE", offers_path(status: :for_sale) %>
+    </h3>
+    <h3>
+      <%= link_to "FOR RENT", offers_path(status: :for_rent) %>
+    </h3>
+    <h3>
+      <%= link_to "ALL OFFERS", offers_path %>
+    </h3>
+</div>

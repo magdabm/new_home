@@ -6,6 +6,8 @@ class OffersController < ApplicationController
 
   def index
     @offers = Offer.all
+    @offers = @offers.where(status: params[:status]) if params[:status].present?
+    # or @offers = @offers.select { |o| o.status.include? params[:status] } if params[:status].present?
   end
 
   def show
@@ -46,7 +48,7 @@ class OffersController < ApplicationController
   private
 
   def offer_params
-    params.require(:offer).permit(:title, :area, :address, :price, :phone, :description, :status)
+    params.require(:offer).permit(:title, :area, :address, :price, :phone, :description, :status, room_ids: [])
   end
 
   def find_offer

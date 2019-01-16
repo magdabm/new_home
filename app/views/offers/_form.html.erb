@@ -34,6 +34,12 @@
      <%= f.text_field :price %>
   </p>
   <p>
+     <%= f.label :room, "Choose the rooms or additional elements in the apartment" %><br>
+     <%= f.collection_check_boxes :room_ids, Room.all.order(:room), :id, :room do |room| %>
+        <%= room.label { room.check_box + room.text } %>
+     <% end %>
+  </p>
+  <p>
      <%= f.label :phone, "Contact number:" %><br>
      <%= f.text_field :phone %>
   <p>
