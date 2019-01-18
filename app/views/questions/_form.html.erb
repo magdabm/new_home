@@ -15,17 +15,15 @@
      </div>
   <% end %>
 
-  <%= form_for [@offer, @question] do |f| %>
+  <%= simple_form_for [@offer, @question] do |f| %>
      <p>
-        <%= f.label :content, 'Question' %><br>
-        <%= f.text_area :content %>
+        <%= f.input :content, label: 'Question', as: :text %><br>
      </p>
      <p>
-        <%= f.label :nick, 'Your nick' %><br>
-        <%= f.text_field :nick %>
+        <%= f.input :nick, label: 'Your nick', placeholder: current_user.email %><br>
      </p>
      <p>
-        <%= f.submit %>
+        <%= f.button :submit, class: "btn-primary"%>
      </p>
   <% end %>
 </div>

@@ -11,27 +11,23 @@
   </div>
 <% end %>
 
-<%= form_for @offer do |f| %>
+<%= simple_form_for @offer do |f| %>
 
   <p>
      <%= f.label :status %><br>
      <%= f.select :status, Offer.statuses.keys %>
   </p>
   <p>
-     <%= f.label :title %><br>
-     <%= f.text_area :title %>
+     <%= f.input :title %>
   </p>
   <p>
-     <%= f.label :area, "Area in square metres:" %><br>
-     <%= f.text_field :area %>
+     <%= f.input :area, label: "Area in square metres:" %>
   </p>
   <p>
-     <%= f.label :address, "Enter the street or district:" %><br>
-     <%= f.text_field :address %>
+     <%= f.input :address, label: "Enter the street or district:" %>
   </p>
   <p>
-     <%= f.label :price, "Price in PLN for month:" %><br>
-     <%= f.text_field :price %>
+     <%= f.input :price, label: "Price in PLN for month:" %>
   </p>
   <p>
      <%= f.label :room, "Choose the rooms or additional elements in the apartment" %><br>
@@ -40,13 +36,15 @@
      <% end %>
   </p>
   <p>
-     <%= f.label :phone, "Contact number:" %><br>
-     <%= f.text_field :phone %>
-  <p>
-     <%= f.label :description %><br>
-     <%= f.text_area :description %>
+     <%= f.association :rooms, label: "Choose the rooms or additional elements in the apartment:", as: :check_boxes, collection: Room.all.order(:room) %>
   </p>
   <p>
-     <%= f.submit %>
+     <%= f.input :phone, label: "Contact number:" %>
+  </p>
+  <p>
+     <%= f.input :description, as: :text %>
+  </p>
+  <p>
+     <%= f.button :submit, class: "btn-primary" %>
   </p>
 <% end %>
