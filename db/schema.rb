@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_16_235000) do
+ActiveRecord::Schema.define(version: 2019_01_18_165200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "districts", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "offers", force: :cascade do |t|
     t.string "title", null: false
@@ -26,6 +32,8 @@ ActiveRecord::Schema.define(version: 2019_01_16_235000) do
     t.integer "area", null: false
     t.bigint "user_id"
     t.integer "status", null: false
+    t.bigint "district_id"
+    t.index ["district_id"], name: "index_offers_on_district_id"
     t.index ["user_id"], name: "index_offers_on_user_id"
   end
 
@@ -66,6 +74,7 @@ ActiveRecord::Schema.define(version: 2019_01_16_235000) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "offers", "districts"
   add_foreign_key "offers", "users"
   add_foreign_key "questions", "offers"
   add_foreign_key "questions", "users"

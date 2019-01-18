@@ -16,6 +16,7 @@ class OffersController < ApplicationController
 
   def new
     @offer = Offer.new
+    # @district = District.find(params[:id])
   end
 
   def create

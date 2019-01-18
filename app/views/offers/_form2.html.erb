@@ -1,0 +1,47 @@
+<% if @offer.errors.any? %>
+  <div>
+    <h4>
+      <%= pluralize(@offer.errors.count, 'error') %> prohibited this advertisement from being saved:
+    </h4>
+    <ul>
+      <% @offer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= simple_form_for @offer do |f| %>
+
+  <p>
+     <%= f.input :status, as: :radio_buttons, collection: Offer.statuses.keys %>
+  </p>
+  <p>
+     <%= f.input :title %>
+  </p>
+  <p>
+     <%= f.input :area, label: "Area in square metres:" %>
+  </p>
+  <p>
+     <%= f.association :district, collection: District.all, input_html: { multiple: true } %>
+  </p>
+  <p>
+     <%= f.input :price, label: "Price in PLN for month:" %>
+  </p>
+  <p>
+     <%= f.label :room, "Choose the rooms or additional elements in the apartment" %><br>
+     <%= f.collection_check_boxes :room_ids, Room.all.order(:room), :id, :room do |room| %>
+        <%= room.label { room.check_box + " " + room.text } %>
+     <% end %>
+  </p>
+  <p>
+     <%= f.input :description, as: :text, placeholder: "Write about apartments and surroundings features, media prices, deposit (if is required), furnishings, requirements for tenants" %>
+  </p>
+  <p>
+     <%= f.input :phone, label: "Contact number:" %>
+  </p>
+
+  <p>
+     <%= f.button :submit, class: "btn-primary" %>
+  </p>
+<% end %>

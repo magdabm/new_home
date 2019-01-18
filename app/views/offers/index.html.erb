@@ -8,10 +8,10 @@
     <tr>
       <th> Purpose </th>
       <th> Title </th>
-      <th> Price in PLN for month</th>
-      <th> Area in m2</th>
-      <th> District or street </th>
-      <th> Publication date</th>
+      <th> Price in PLN for month </th>
+      <th> Area in m2 </th>
+      <th> District </th>
+      <th> Publication date </th>
       <th></th>
       <th></th>
       <th></th>
@@ -24,7 +24,7 @@
         <td><strong><%= link_to "#{offer.title}", offer_path(offer) %></strong></td>
         <td><%= offer.price %> </td>
         <td><%= offer.area %> </td>
-        <td><%= offer.address %> </td>
+        <td> <%= offer.district_id %> </td>
         <td><%= offer.created_at.to_date %></td>
         <td><%= link_to 'Show details', offer_path(offer) %>
         <% if offer.user == current_user || current_user&.admin? %>

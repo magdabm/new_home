@@ -11,40 +11,48 @@
   </div>
 <% end %>
 
-<%= simple_form_for @offer do |f| %>
+<%= form_for @offer do |f| %>
 
   <p>
-     <%= f.label :status %><br>
-     <%= f.select :status, Offer.statuses.keys %>
+    <%= f.label :status %><br>
+    <%= f.select :status, Offer.statuses.keys %>
   </p>
   <p>
-     <%= f.input :title %>
+    <%= f.label :title %><br>
+    <%= f.text_area :title %>
   </p>
   <p>
-     <%= f.input :area, label: "Area in square metres:" %>
+     <%= f.label :area, "Area in square metres:" %><br>
+     <%= f.text_field :area %>
+  </p>
+
+  <p>
+     <%= f.label :price, "Price in PLN for month:" %><br>
+     <%= f.text_field :price %>
   </p>
   <p>
-     <%= f.input :address, label: "Enter the street or district:" %>
+    <%= f.label :district %><br>
+    <%= f.select :district_id, District.all.order(:name) %>
   </p>
   <p>
-     <%= f.input :price, label: "Price in PLN for month:" %>
+    <%= f.label :address %><br>
+    <%= f.text_field :address  %>
   </p>
   <p>
      <%= f.label :room, "Choose the rooms or additional elements in the apartment" %><br>
      <%= f.collection_check_boxes :room_ids, Room.all.order(:room), :id, :room do |room| %>
-        <%= room.label { room.check_box + room.text } %>
+        <%= room.label(class:"form-check form-check-inline") { room.check_box + room.text } %>
      <% end %>
   </p>
   <p>
-     <%= f.association :rooms, label: "Choose the rooms or additional elements in the apartment:", as: :check_boxes, collection: Room.all.order(:room) %>
+     <%= f.label :description, placeholder: "Write about apartments and surroundings features, media prices, deposit (if is required), furnishings, requirements for tenants" %><br>
+     <%= f.text_area :description %>
   </p>
   <p>
-     <%= f.input :phone, label: "Contact number:" %>
+     <%= f.label :phone, "Contact number:" %><br>
+     <%= f.text_field :phone %>
   </p>
   <p>
-     <%= f.input :description, as: :text %>
-  </p>
-  <p>
-     <%= f.button :submit, class: "btn-primary" %>
+     <%= f.submit %>
   </p>
 <% end %>

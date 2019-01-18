@@ -61,3 +61,46 @@ room_13.save
 room_14.save
 room_15.save
 room_16.save
+
+d_1 = District.new(name: "Stare Miasto")
+d_2 = District.new(name: "Grzegórzki")
+d_3 = District.new(name: "Prądnik Czerwony")
+d_4 = District.new(name: "Prądnik Biały")
+d_5 = District.new(name: "Krowodrza")
+d_6 = District.new(name: "Bronowice")
+d_7 = District.new(name: "Zwierzyniec")
+d_8 = District.new(name: "Dębniki")
+d_9 = District.new(name: "Łagiewniki-Borek Fałęcki")
+d_10 = District.new(name: "Swoszowice")
+d_11 = District.new(name: "Podgórze Duchackie")
+d_12 = District.new(name: "Bieżanów-Prokocim")
+d_13 = District.new(name: "Podgórze")
+d_14 = District.new(name: "Czyżyny")
+d_15 = District.new(name: "Mistrzejowice")
+d_16 = District.new(name: "Bieńczyce")
+d_17 = District.new(name: "Wzgórza Krzesławickie")
+d_18 = District.new(name: "Nowa Huta")
+d_1.save
+d_2.save
+d_3.save
+d_4.save
+d_5.save
+d_6.save
+d_7.save
+d_8.save
+d_9.save
+d_10.save
+d_11.save
+d_12.save
+d_13.save
+d_14.save
+d_15.save
+d_16.save
+d_17.save
+d_18.save
+
+o_1.district << d_5
+o_2.district << d_1
+o_3.district << d_8
+o_4.district << d_5
+o_5.district << d_13
