@@ -16,7 +16,6 @@ class OffersController < ApplicationController
 
   def new
     @offer = Offer.new
-    # @district = District.find(params[:id])
   end
 
   def create
@@ -50,7 +49,7 @@ class OffersController < ApplicationController
   private
 
   def offer_params
-    params.require(:offer).permit(:title, :area, :address, :price, :phone, :description, :status, room_ids: [])
+    params.require(:offer).permit(:title, :area, :address, :price, :phone, :description, :status, :district_id, room_ids: [])
   end
 
   def find_offer

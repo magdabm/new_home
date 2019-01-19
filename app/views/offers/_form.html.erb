@@ -31,8 +31,10 @@
      <%= f.text_field :price %>
   </p>
   <p>
-    <%= f.label :district %><br>
-    <%= f.select :district_id, District.all.order(:name) %>
+     <%= f.label :district_id, "District" %><br>
+     <%= f.collection_check_boxes :district_id, District.all.order(:name), :id, :name do |dis| %>
+        <%= dis.label(class:"form-check form-check-inline") { dis.check_box + dis.text } %>
+     <% end %>
   </p>
   <p>
     <%= f.label :address %><br>
