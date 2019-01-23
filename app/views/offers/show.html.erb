@@ -9,7 +9,7 @@
   </p></h2></strong>
   <p>
      Purpose:
-     <%= link_to @offer.status, offers_path(status: @offer.status) %>
+     <%= link_to @offer.status.humanize, offers_path(status: @offer.status) %>
   </p>
   <p>
     Area (m2):
@@ -21,7 +21,7 @@
   </p>
   <p>
     District:
-    <i><%= @offer.district %></i>
+    <i><%= @offer.district.name %></i>
   </p>
   <p>
      Rooms:
@@ -41,6 +41,13 @@
     Contact phone:
     <i><%= @offer.phone %></i>
   </p>
+
+  <p>
+    <% @offer.photos_urls(:thumb).each do |photo| %>
+       <%= image_tag(photo) if @offer.photos? %>
+    <% end %>
+  </p>
+
   <p><small>
     Entry author:
     <i><%= @offer.user.email %></i>

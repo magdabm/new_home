@@ -6,8 +6,14 @@ class OffersController < ApplicationController
 
   def index
     @offers = Offer.all
+    # @offers = @offers.includes(:user).order(id: :desc).page(params[:page]).per(6)
     @offers = @offers.where(status: params[:status]) if params[:status].present?
     # or @offers = @offers.select { |o| o.status.include? params[:status] } if params[:status].present?
+    @offers = @offers.where(district_id: params[:district]) if params[:district].present?
+    @best_offers = @offers.best_factor
+    if @offers.count == 0
+      flash[:alert] = "Sorry, we don't have offers that meet your criteria..."
+    end
   end
 
   def show
@@ -40,16 +46,16 @@ class OffersController < ApplicationController
   end
 
   def destroy
-      @offer.destroy
-      redirect_to offers_path
-      flash[:notice] = "Advertisement has been succesfully deleted from our database."
+    @offer.destroy
+    redirect_to offers_path
+    flash[:notice] = "Advertisement has been succesfully deleted from our database."
   end
 
 
   private
 
   def offer_params
-    params.require(:offer).permit(:title, :area, :address, :price, :phone, :description, :status, :district_id, room_ids: [])
+    params.require(:offer).permit(:title, :area, :address, :price, :phone, :description, :status, :district_id, {photos: []}, room_ids: [])
   end
 
   def find_offer

@@ -8,7 +8,7 @@
     <tr>
       <th> Purpose </th>
       <th> Title </th>
-      <th> Price in PLN for month </th>
+      <th> Price in PLN </th>
       <th> Area in m2 </th>
       <th> District </th>
       <th> Publication date </th>
@@ -20,11 +20,11 @@
     <% @offers.each do |offer| %>
       <tr>
 
-        <td><%= link_to offer.status, offers_path(status: offer.status) %></td>
+        <td><%= link_to offer.status.humanize, offers_path(status: offer.status) %></td>
         <td><strong><%= link_to "#{offer.title}", offer_path(offer) %></strong></td>
         <td><%= offer.price %> </td>
         <td><%= offer.area %> </td>
-        <td> <%= offer.district %> </td>
+        <td> <%= offer.district.name %> </td>
         <td><%= offer.created_at.to_date %></td>
         <td><%= link_to 'Show details', offer_path(offer) %>
         <% if offer.user == current_user || current_user&.admin? %>
@@ -47,9 +47,19 @@
 <br>
 <%= form_tag offers_path, method: :get do %>
    <div class="input-group">
-      <%= select_tag :status, options_for_select(@offers.statuses), class: "form-control" %>
+      <%= select_tag :status, options_for_select(@offers.statuses.map { |s| [s.first.humanize, s.last]}, selected: params[:status]), class: "form-control" %>
       <span class="input-group-btn">
          <%= submit_tag "Search", class: "btn btn-default" %>
       </span>
    </div>
 <% end %>
+<br>
+<%= form_tag offers_path, method: :get do %>
+   <div class="input-group">
+      <%= select_tag :district, options_for_select(District.all.order(:name).map { |d| [d.name, d.id]}, selected: params[:district]), class: "form-control" %>
+      <span class="input-group-btn">
+         <%= submit_tag "Search", class: "btn btn-default" %>
+      </span>
+   </div>
+<% end %>
+<br>
