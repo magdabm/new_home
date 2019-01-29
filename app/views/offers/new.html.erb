@@ -2,18 +2,18 @@
   <div class="row">
     <div class="col">
       <button style="border: none; background: none">
-        <%= link_to image_tag("logo_blue_thin_50x135_png.png", size: "405x150"), offers_path %>
+        <%= link_to image_tag("logo_blue_thin_50x135_png.png", size: "338x125"), welcome_index_path, class: "img-responsive" %>
       </button>
     </div>
     <div class="col">
-      <center><%= image_tag("forsr_blue_50x228_png.png", size: "684x150", class: "float-right") %></center>
+      <center><%= image_tag("forsr_blue_50x228_png.png", size: "570x125", class: "float-right img-responsive", alt: "logo") %></center>
     </div>
   </div>
 </div>
 
 
 <div class="container div-new">
-  <h2 class="p-3 mb-2 bg-success text-white"><strong>Add your offer:</strong></h2>
+  <h4 class="p-3 mb-2 bg-success text-white"><strong>Add your offer:</strong></h4>
   <%= render 'form' %>
 </div>
 

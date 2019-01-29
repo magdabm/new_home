@@ -2,17 +2,28 @@
   <div class="row">
     <div class="col">
       <button style="border: none; background: none">
-        <%= link_to image_tag("logo_blue_thin_50x135_png.png", size: "405x150"), offers_path %>
+        <%= link_to image_tag("logo_blue_thin_50x135_png.png", size: "338x125"), welcome_index_path, class: "img-responsive" %>
       </button>
     </div>
-    <div class="col">
-      <center><%= image_tag("forsr_blue_50x228_png.png", size: "684x150", class: "float-right", alt: "logo") %></center>
-    </div>
+    <% if @offer.status == "for_rent" %>
+      <div class="col float-right">
+        <button class="img-responsive float-right"; style="border: none; background: none">
+          <%= link_to image_tag("for_rent_blue_50x124_png.png", size: "310x125", alt: "logo"), offers_path(status: @offer.status) %>
+        </button>
+      </div>
+    <% else %>
+      <div class="col float-right">
+        <button class="img-responsive float-right"; style="border: none; background: none">
+          <%= link_to image_tag("for_sale_blue_50x122_png.png", size: "305x125", alt: "logo"), offers_path(status: @offer.status) %>
+        </button>
+      </div>
+    <% end %>
   </div>
 </div>
 
+
 <div class="container div-new">
-  <h2 class="p-3 mb-2 bg-success text-white"><strong>Edit your offer:</strong></h2>
+  <h4 class="p-3 mb-2 bg-success text-white"><strong>Edit your offer:</strong></h4>
   <%= render 'form' %>
 </div>
 

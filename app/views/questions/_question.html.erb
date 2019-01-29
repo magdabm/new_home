@@ -1,16 +1,16 @@
 <div class="div-q-single">
   <p>
-  <strong>Nick:</strong>
-  <%= question.nick %>
-</p>
-<p>
-   <strong>Content:</strong>
-   <%= question.content %>
-</p>
-<p>
-   <strong>Date:</strong>
-   <%= question.created_at.to_date %>
-</p>
+    Nick:
+    <%= question.nick %>
+  </p>
+  <p>
+    Content:
+    <%= question.content %>
+  </p>
+  <p>
+    Date:
+    <%= question.created_at.to_date %>
+  </p>
 
 <% if question.user == current_user || current_user&.admin? %>
    <p><small><%= link_to 'Edit', edit_offer_question_path(offer_id: question.offer.id, id: question.id) %>

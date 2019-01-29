@@ -2,34 +2,34 @@
   <div class="row">
     <div class="col">
       <button style="border: none; background: none">
-        <%= link_to image_tag("logo_blue_thin_50x135_png.png", size: "405x150"), welcome_index_path %>
+        <%= link_to image_tag("logo_blue_thin_50x135_png.png", size: "338x125"), welcome_index_path, class: "img-responsive" %>
       </button>
     </div>
     <div class="col">
-      <center><%= image_tag("forsr_blue_50x228_png.png", size: "684x150", class: "float-right", alt: "logo") %></center>
+      <center><%= image_tag("forsr_blue_50x228_png.png", size: "570x125", class: "float-right img-responsive", alt: "logo") %></center>
     </div>
   </div>
 </div>
 
 <div>
 
-<div class="container-mymax">
+<div class="container cont">
   <div id="best">
     <div class="row">
       <div class="col-sm"; style="margin-top: 30px">
-        <h2 class="p-3 mb-2 bg-warning text-light"><b>Best 5 apartments for RENT!</b></h2>
+        <h4 class="p-3 mb-2 bg-warning text-light"><b>Best 5 apartments for RENT!</b></h4>
         <table class="table table-sm"; style="font-size: 15px; background: rgba(255, 255, 240, 0.5)">
           <thead>
             <tr>
               <th style="width: 18em"> Title </th>
-              <th> Price in PLN </th>
-              <th> Area in m2 </th>
+              <th> Price (PLN) </th>
+              <th> Area m<sup>2<sup> </th>
               <th> Factor </th>
               <th style="width: 11em"> District </th>
             </tr>
             <% @best_rent.each do |r| %>
               <tr>
-                <td><strong><%= link_to truncate(r.title, :length => 25), offer_path(r) %></strong></td>
+                <td><strong><%= link_to truncate(r.title, :length => 30), offer_path(r) %></strong></td>
                 <td><%= r.price %> </td>
                 <td><%= r.area %> </td>
                 <td><%= r.factor %> </td>
@@ -39,19 +39,19 @@
         </table>
       </div>
       <div class="col-sm"; style="margin-top: 30px">
-        <h2 class="p-3 mb-2 bg-warning text-light"><b>Best 5 apartments for SALE!</b></h2>
-        <table class="table table-sm"; style="font-size: 15px; background: rgba(255, 255, 240, 0.5)">
+        <h4 class="p-3 mb-2 bg-warning text-light"><b>Best 5 apartments for SALE!</b></h4>
+        <table class="table table-sm table-best">
           <thead>
             <tr>
               <th style="width: 18em"> Title </th>
-              <th> Price in PLN </th>
-              <th> Area in m2 </th>
+              <th> Price (PLN) </th>
+              <th> Area m<sup>2<sup> </th>
               <th> Factor </th>
               <th style="width: 11em"> District </th>
             </tr>
             <% @best_sale.each do |s| %>
               <tr>
-                <td><strong><%= link_to truncate(s.title, :length => 25), offer_path(s) %></strong></td>
+                <td><strong><%= link_to truncate(s.title, :length => 30), offer_path(s) %></strong></td>
                 <td><%= s.price %> </td>
                 <td><%= s.area %> </td>
                 <td><%= s.factor %> </td>
@@ -66,16 +66,16 @@
     <span style="font-size: 1.8em; color: Gold;">
       <i class="fa fa-angle-double-up"; id="icon_best"></i>
     </span>
-    <button class="btn btn-warning btn-lg"; id="hide_best">Hide best offers</button>
+    <button class="btn btn-warning text-white"; id="hide_best">Hide best offers</button>
   </div>
 </div>
 
-<div class="container-mymax">
+<div class="container cont">
 
   <div class="row">
 
     <div class="col-sm-10">
-      <h2 class="p-3 mb-2 bg-info text-white"> All offers of apartments for rent or for sale</h2>
+      <h3 class="p-3 mb-2 bg-info text-white"> All offers of apartments for rent or for sale</h3>
       <table class="table"; style="background: rgba(255, 255, 240, 0.8)">
         <thead>
           <tr>
@@ -86,8 +86,6 @@
             <th> Area (m<sup>2</sup>) </th>
             <th> District </th>
             <th> Publication date </th>
-            <th></th>
-            <th></th>
             <th></th>
           </tr>
         </thead>
@@ -133,27 +131,27 @@
 
     <div class="col-sm-2">
       <div style="padding-bottom: 10px">
-        <button class="btn btn-success btn-lg no-hyper"><h3 class="shadow-lg rounded"; style="padding: 10px"><b><%= link_to 'ADD YOUR OFFER!', new_offer_path %> </h3></b></button>
+        <button class="btn btn-success btn-lg no-hyper"><h5 class="shadow-lg rounded"; style="padding: 10px"><b><%= link_to 'ADD YOUR OFFER!', new_offer_path %> </h5></b></button>
       </div>
       <br>
       <div class="div-search"; style="padding-top: 20px">
-        <h4 class="shadow-lg rounded p-3 mb-2 bg-light text-dark border border-info">
-         <b>CHOOSE</b></h4>
+        <h5 class="shadow-lg rounded p-3 mb-2 bg-light text-dark border border-info">
+        <b>CHOOSE</b></h5>
         <br>
-        <h5> For rent or for sale? </h5>
+        <h6> For rent or for sale? </h6>
         <%= form_tag offers_path, method: :get do %>
-           <div class="input-group">
-              <%= select_tag :status, options_for_select(@offers.statuses.map { |s| [s.first.humanize, s.last]}, selected: params[:status]), class: "form-control" %>
-              <span class="input-group-btn">
+           <div class="input-group mx-auto">
+              <span class="mx-auto"; style="margin-bottom: 6px"><%= select_tag :status, options_for_select(@offers.statuses.map { |s| [s.first.humanize, s.last]}, selected: params[:status]), class: "form-control" %></span><br>
+              <span class="input-group-btn mx-auto">
                  <%= submit_tag "Search", class: "btn btn-info" %>
               </span>
            </div>
         <% end %>
         <br>
-        <h5> Which part of Kraków? </h5>
+        <h6> Which part of Kraków? </h6>
         <%= form_tag offers_path, method: :get do %>
            <div class="input-group">
-              <%= select_tag :district, options_for_select(District.all.order(:name).map { |d| [d.name, d.id]}, selected: params[:district]), class: "form-control" %>
+              <span class="mx-auto"><%= select_tag :district, options_for_select(District.all.order(:name).map { |d| [d.name, d.id]}, selected: params[:district]), class: "form-control" %></span>
               <span class="input-group-table table btn">
                  <%= submit_tag "Search", class: "btn btn-info" %>
               </span>
@@ -166,7 +164,7 @@
 
 <hr>
 
-<div class="container-mymax">
+<div class="container cont">
   <span style="font-size: 1.5em; color: CadetBlue">
   <i class="fa fa-reply-all"></i>
   </span>

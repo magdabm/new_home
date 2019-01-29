@@ -2,16 +2,20 @@
   <div class="row">
     <div class="col">
       <button style="border: none; background: none">
-        <%= link_to image_tag("logo_blue_thin_50x135_png.png", size: "405x150", alt: "logo"), offers_path %>
+        <%= link_to image_tag("logo_blue_thin_50x135_png.png", size: "338x125"), welcome_index_path, class: "img-responsive" %>
       </button>
     </div>
     <% if @offer.status == "for_rent" %>
-      <div class="col">
-        <center><%= image_tag("for_rent_blue_50x124_png.png", size: "372x150", class: "float-right", alt: "logo") %></center>
+      <div class="col float-right">
+        <button class="img-responsive float-right"; style="border: none; background: none">
+          <%= link_to image_tag("for_rent_blue_50x124_png.png", size: "310x125", alt: "logo"), offers_path(status: @offer.status) %>
+        </button>
       </div>
     <% else %>
-      <div class="col">
-        <center><%= image_tag("for_sale_blue_50x122_png.png", size: "366x150", class: "float-right", alt: "logo") %></center>
+      <div class="col float-right">
+        <button class="img-responsive float-right"; style="border: none; background: none">
+          <%= link_to image_tag("for_sale_blue_50x122_png.png", size: "305x125", alt: "logo"), offers_path(status: @offer.status) %>
+        </button>
       </div>
     <% end %>
   </div>
@@ -21,16 +25,16 @@
 
   <div class="container", style="padding-top: 20px">
     <div class="container div-title">
-      <strong><h2>
+      <strong><h4>
         <%= @offer.title %>
-      </h2></strong>
+      </h4></strong>
     </div>
     <br>
     <div class="container div-new border border-success">
 
       <table class="table-offer">
         <tr>
-          <td class="tb-val">Purpose:</td>
+          <td class="tb-val td-offer">Purpose:</td>
           <td><% if @offer.status == "for_rent" %>
             <span class="badge badge-pill badge-light border border-dark no-hyper2"; style="font-size: 15px; color: Black">
               <%= link_to @offer.status.humanize, offers_path(status: @offer.status) %>
@@ -117,11 +121,10 @@
 
     <br>
     <div id="quest">
-      <h4 class="p-3 mb-2 bg-success text-white"> Asked questions: </h4>
+      <h5 class="p-2 mb-2 bg-success text-white"> Asked questions: </h5>
       <%= render @offer.questions %>
     </div>
   </div>
-
   <br>
   <hr>
 
@@ -133,4 +136,5 @@
   </div>
   <p><br></p>
   <hr>
+
 </div>
