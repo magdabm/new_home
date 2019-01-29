@@ -11,7 +11,7 @@
      <%= f.input :area, label: "Area in square metres:" %>
   </p>
   <p>
-     <%= f.association :district, collection: District.all, input_html: { multiple: false } %>
+     <%= f.association :district, collection: District.all.order(:name), input_html: { multiple: false } %>
   </p>
   <p>
      <%= f.input :price, label: "Price in PLN for month:", as: :string %>
