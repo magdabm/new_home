@@ -120,8 +120,8 @@ d_16.save
 d_17.save
 d_18.save
 
-o_1.district << d_5
-o_2.district << d_1
-o_3.district << d_8
-o_4.district << d_5
-o_5.district << d_13
+o_1.district = d_5
+o_2.district = d_1
+o_3.district = d_8
+o_4.district = d_5
+o_5.district = d_13
