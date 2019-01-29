@@ -1,29 +1,18 @@
 <div class="container" align="center">
 
-  <h4>Ask a question:</h4>
+  <h4><b>Ask a question:<b></h4>
 
-  <% if @question.errors.any? %>
-     <div>
-        <h4>
-           <%= pluralize(@question.errors.count, 'error') %> prohibited this question from being saved:
-        </h4>
-        <ul>
-           <% @question.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-           <% end %>
-        </ul>
-     </div>
-  <% end %>
+  <%= render 'common/errors', model: @question %>
 
   <%= simple_form_for [@offer, @question] do |f| %>
      <p>
-        <%= f.input :content, label: 'Question', as: :text %><br>
+        <%= f.input :content, label: 'Question', as: :text, input_html: { style: 'height: 120px' } %><br>
      </p>
      <p>
         <%= f.input :nick, label: 'Your nick', placeholder: current_user.email %><br>
      </p>
      <p>
-        <%= f.button :submit, class: "btn-primary"%>
+        <%= f.button :submit, class: "btn btn-success"%>
      </p>
   <% end %>
 </div>

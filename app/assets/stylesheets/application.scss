@@ -13,6 +13,7 @@
  */
 
  @import "bootstrap";
+ @import "font-awesome";
 
  .rent {
    background: #DDDDDD;
@@ -20,4 +21,115 @@
 
  .sale {
    background: #CCCCCC;
+ }
+
+ .hello-text {
+   font-family: "Palatino Linotype";
+   font-size: 50px;
+   font-style: italic;
+   font-weight: bold;
+   color: #494949;
+ }
+
+ .index-button {
+   padding: 13px;
+   font-size: 28px;
+   font-weight: bold;
+   border-color: #FFFFFF;
+   border-width: 3px;
+ }
+
+ .container-mymax {
+   margin: 5px 250px 40px 250px;
+ }
+
+ .container-logos {
+   margin: 20px 0px 20px 0px;
+   padding: 5px 250px 5px 250px;
+   background: rgba(255, 255, 255, 0.7)
+ }
+
+ .back-img-1 {
+    background: image-url('back_chair_transp.jpg');
+    background-repeat: repeat;
+ }
+
+
+ .div-search {
+   text-align: center;
+   padding: 0 12px 0 12px;
+   background: rgba(255, 255, 240, 0.8);
+ }
+
+ .no-hyper a:hover {
+   text-decoration:none;
+   color: #FFFFFF;
+ }
+
+ .no-hyper a:visited {
+   text-decoration:none;
+   color: #FFFFFF;
+ }
+
+ .no-hyper a:active {
+   text-decoration:none;
+   color: #FFFFFF;
+ }
+
+ .no-hyper2 a:hover {
+   text-decoration:none;
+   color: #000000;
+ }
+
+ .no-hyper2 a:visited {
+   text-decoration:none;
+   color: #000000;
+ }
+
+ .no-hyper2 a:active {
+   text-decoration:none;
+   color: #000000;
+ }
+
+ .div-new {
+   background: rgba(255, 255, 240, 0.8);
+   padding: 20px 30px 10px 30px;
+ }
+
+ .div-title {
+   background: rgba(50, 205, 50, 0.6);
+   padding: 20px 20px 10px 20px;
+   color: #FFFFFF;
+ }
+
+ .div-ask {
+   margin: 5px 600px 40px 600px;
+   background: rgba(0, 204, 0, 0.2);
+   padding: 20px 20px 10px 20px;
+ }
+
+ .div-q {
+   background: rgba(0, 204, 0, 0.15);
+   padding: 20px 20px 10px 20px;
+ }
+
+ .div-q-single {
+   margin: 5px 5px 10px 5px;
+   padding: 20px 20px 10px 20px;
+   background: rgba(255, 255, 240, 0.8);
+ }
+
+ .div-index-buttons {
+   margin: 5px 180px 40px 180px;
+ }
+
+ table.table-offer {
+   width: 80%;
+   height: 20em;
+   font-size: 18px;
+ }
+
+ .off-desc {
+   font-size: 18px;
+   text-align: justify;
  }

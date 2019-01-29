@@ -4,7 +4,7 @@ class Offer < ApplicationRecord
   has_many :offers_rooms
   has_many :rooms, through: :offers_rooms
   has_many :questions, dependent: :destroy
-  belongs_to :district, optional: true
+  belongs_to :district
 
   mount_uploaders :photos, PhotoUploader
 
@@ -18,16 +18,18 @@ class Offer < ApplicationRecord
   validate :has_rooms?
   validates :district, presence: true
 
-  scope :best_factor, -> { order(factor: :DESC).limit(10) }
+  scope :best_rent, -> { where(status: :for_rent).order(:factor).limit(5) }
+  scope :best_sale, -> { where(status: :for_sale).order(:factor).limit(5) }
+
 
 
   def price_to_area_factor
-    return factor = (price/area.to_f).round(2)
+    return ratio = (price/area.to_f).round(2) if price
   end
 
   def has_rooms?
     if rooms.size <= 2
-      errors.add(:rooms, "- you need to mark 3 rooms at least.")
+      errors.add(:rooms, "- you need to mark 3 rooms at least")
     end
   end
 

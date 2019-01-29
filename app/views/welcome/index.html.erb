@@ -1,20 +1,42 @@
-<br><br><br><br><br>
-<div align="center">
 
-  <h2 align="center"> Welcome at NEW HOME website </h2>
-
-  <h2> Find with us your new home! </h2>
-  <br><br>
-  <h3> What do you want to look at? </h3>
-
-  <h3> Apartments: </h3>
-    <h3>
-      <%= link_to "FOR SALE", offers_path(status: :for_sale) %>
-    </h3>
-    <h3>
-      <%= link_to "FOR RENT", offers_path(status: :for_rent) %>
-    </h3>
-    <h3>
-      <%= link_to "ALL OFFERS", offers_path %>
-    </h3>
+<div class="container-logos">
+  <div class="row">
+    <div class="col">
+      <button style="border: none; background: none">
+        <%= link_to image_tag("logo_blue_thin_50x135_png.png", size: "405x150"), offers_path %>
+      </button>
+    </div>
+    <div class="col">
+      <center><%= image_tag("forsr_blue_50x228_png.png", size: "684x150", class: "float-right", alt: "logo") %></center>
+    </div>
+  </div>
 </div>
+
+<div align="center">
+  <br>
+  <p class="hello-text"> Welcome! Find with us your new home! </p>
+</div>
+<br>
+
+<div class="container"; align="center"; style="color: #494949">
+  <h3><b> What do you want to look at? </b></h3>
+  <br>
+  <h3><b> Apartments: </b></h3>
+  <br>
+</div>
+
+<div class="container">
+  <div class="row div-index-buttons">
+    <div class="col-sm-4">
+      <button class="btn btn-info btn-lg shadow-lg rounded no-hyper index-button"><%= link_to "FOR SALE", offers_path(status: :for_sale) %></button>
+    </div>
+    <div class="col-sm-4">
+      <button class="btn btn-warning btn-lg shadow-lg rounded no-hyper index-button"><%= link_to "FOR RENT", offers_path(status: :for_rent) %> </button>
+    </div>
+    <div class="col-sm-4">
+      <button class="btn btn-success btn-lg shadow-lg rounded no-hyper index-button"><%= link_to "ALL OFFERS", offers_path %></button>
+    </div>
+  </div>
+</div>
+<br>
+<br>

@@ -16,3 +16,38 @@
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
+
+window.addEventListener('load', function () {
+
+	document.getElementById('full')
+	.addEventListener('click', function () {
+    if(document.getElementById('quest').style.display == 'none') {
+      document.getElementById('quest').style.display = 'block';
+      document.getElementById('full').innerHTML = "Hide questions";
+			document.getElementById('icon_best').className = "fa fa-angle-double-up"
+    } else {
+      document.getElementById('quest').style.display = 'none';
+      document.getElementById('full').innerHTML = "Show questions";
+			document.getElementById('icon_best').className = "fa fa-angle-double-down"
+    }
+  })
+
+})
+
+
+window.addEventListener('load', function () {
+
+  document.getElementById('hide_best')
+	.addEventListener('click', function () {
+    if(document.getElementById('best').style.display == 'none') {
+      document.getElementById('best').style.display = 'block';
+      document.getElementById('hide_best').innerHTML = "Hide best offers";
+			document.getElementById('icon_best').className = "fa fa-angle-double-up"
+    } else {
+      document.getElementById('best').style.display = 'none';
+      document.getElementById('hide_best').innerHTML = "Show best offers";
+			document.getElementById('icon_best').className = "fa fa-angle-double-down"
+    }
+  })
+
+})

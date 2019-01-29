@@ -1,38 +1,53 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NewHome</title>
+    <title>New Home</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+
+    <style>
+      div#quest{
+        display:block;
+      }
+    </style>
+
+
   </head>
 
   <body>
-    <% if notice %>
-      <div class="alert alert-info">
-        <%= notice %>
-      </div>
-    <% end %>
 
-    <% if alert %>
-      <div class="alert alert-danger">
-        <%= alert %>
-      </div>
-    <% else %>
-      <%= link_to 'Sign in', new_user_session_path %>
-      <%= link_to 'Sign up', new_user_registration_path %>
-    <% end %>
+    <div class= "back-img-1">
 
-    <% if user_signed_in? %>
-      <p>
-        Hello <%= current_user.email %>!
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-      </p>
-    <% end %>
+      <% if notice %>
+        <div class="alert alert-info">
+          <%= notice %>
+        </div>
+      <% end %>
 
-    <%= yield %>
+      <% if alert %>
+        <div class="alert alert-danger">
+          <%= alert %>
+        </div>
+      <% else %>
+        <div style="padding: 5px 5px 0 15px">
+          <%= link_to 'Sign in', new_user_session_path %>
+          <%= link_to 'Sign up', new_user_registration_path %>
+        </div>
+      <% end %>
+
+      <% if user_signed_in? %>
+        <div style="padding: 0 5px 5px 15px">
+          Hello <%= current_user.email %>!
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+        </div>
+      <% end %>
+
+      <%= yield %>
+
+    </div>
 
   </body>
 </html>

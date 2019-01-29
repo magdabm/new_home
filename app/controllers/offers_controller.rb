@@ -6,11 +6,14 @@ class OffersController < ApplicationController
 
   def index
     @offers = Offer.all
-    # @offers = @offers.includes(:user).order(id: :desc).page(params[:page]).per(6)
+    @offers = @offers.includes(:user).order(id: :desc).page(params[:page]).per(6)
+
     @offers = @offers.where(status: params[:status]) if params[:status].present?
     # or @offers = @offers.select { |o| o.status.include? params[:status] } if params[:status].present?
     @offers = @offers.where(district_id: params[:district]) if params[:district].present?
-    @best_offers = @offers.best_factor
+    @best_sale = @offers.best_sale
+    @best_rent = @offers.best_rent
+    unpaged_offers = @offers.best_sale.except(:limit, :offset) || @offers.best_rent.except(:limit, :offset)
     if @offers.count == 0
       flash[:alert] = "Sorry, we don't have offers that meet your criteria..."
     end
@@ -27,6 +30,7 @@ class OffersController < ApplicationController
   def create
     @offer = Offer.new(offer_params)
     @offer.user = current_user if current_user
+    @offer.factor = @offer.price_to_area_factor
     if @offer.save
       redirect_to @offer
       flash[:notice] = "Advertisement has been succesfully added to our database."
@@ -55,7 +59,7 @@ class OffersController < ApplicationController
   private
 
   def offer_params
-    params.require(:offer).permit(:title, :area, :address, :price, :phone, :description, :status, :district_id, {photos: []}, room_ids: [])
+    params.require(:offer).permit(:title, :area, :price, :phone, :description, :status, :district_id, :factor, {photos: []}, room_ids: [])
   end
 
   def find_offer

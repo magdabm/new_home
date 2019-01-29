@@ -1,9 +1,7 @@
-
-<h4> Asked questions: </h4>
-<br>
-<p>
-   <strong>Nick:</strong>
-   <%= question.nick %>
+<div class="div-q-single">
+  <p>
+  <strong>Nick:</strong>
+  <%= question.nick %>
 </p>
 <p>
    <strong>Content:</strong>
@@ -11,13 +9,12 @@
 </p>
 <p>
    <strong>Date:</strong>
-   <%= question.created_at %>
+   <%= question.created_at.to_date %>
 </p>
 
 <% if question.user == current_user || current_user&.admin? %>
    <p><small><%= link_to 'Edit', edit_offer_question_path(offer_id: question.offer.id, id: question.id) %>
-   <%= link_to 'Destroy', offer_question_path(offer_id: question.offer.id, id: question.id), method: :delete, data: { confirm: 'Are you sure?' } %></p></small>
+   <%= link_to 'Delete', offer_question_path(offer_id: question.offer.id, id: question.id), method: :delete, data: { confirm: 'Are you sure?' } %></p></small>
 <% end %>
 
-<br>
-<br>
+</div>
