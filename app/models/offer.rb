@@ -17,6 +17,7 @@ class Offer < ApplicationRecord
   validates :phone, presence: true, length: { is: 9 }
   validate :has_rooms?
   validates :district, presence: true
+  validates :status, presence: true
 
   scope :best_rent, -> { where(status: :for_rent).order(:factor).limit(5) }
   scope :best_sale, -> { where(status: :for_sale).order(:factor).limit(5) }
