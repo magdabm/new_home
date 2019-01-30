@@ -91,9 +91,7 @@
         </thead>
         <% @offers.each do |offer| %>
           <tr>
-            <td>
-              <%= image_tag(offer.photos_urls(:thumb)[0]) if offer.photos? %>
-            </td>
+            
             <td>
               <% if offer.status == "for_rent" %>
                 <span class="badge badge-pill badge-light border border-dark no-hyper2"; style="font-size: 15px; color: Black">
