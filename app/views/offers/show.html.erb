@@ -80,9 +80,9 @@
       <br>
 
       <div>
-        <% @offer.photos_urls(:l_thumb).each do |photo| %>
-            <%= image_tag(photo) if @offer.photos? %>
-        <% end %>
+
+            <%= image_tag(@offer.photo.url) if @offer.photo? %>
+  
       </div>
 
       <p style="text-align: right"><small>
