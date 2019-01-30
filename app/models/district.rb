@@ -1,5 +1,5 @@
 class District < ApplicationRecord
 
-  belongs_to :offers
+  belongs_to :offers, optional: true
 
 end

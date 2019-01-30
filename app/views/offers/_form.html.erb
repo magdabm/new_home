@@ -27,15 +27,15 @@
   </p>
 
   <p>
-    <%= f.label :photo %><br>
-
-       <%= image_tag(@offer.photo_url) if @offer.photo? %>
-
-    <%= f.file_field :photo %>
-    <%= f.hidden_field :photo_cache %>
+    <%= f.label :photos %><br>
+    <% @offer.photos_urls.each do |photo| %>
+       <%= image_tag(photo) if @offer.photos? %>
+    <% end %>
+    <%= f.file_field :photos, multiple: true, class: "btn btn-light" %>
+    <%= f.hidden_field :photos_cache %>
   </p>
   <p><label>
-    <%= f.check_box :remove_photo! %>
+    <%= f.check_box :remove_photos! %>
     Remove photos
   </label></p>
   <p>

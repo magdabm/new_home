@@ -92,7 +92,7 @@
         <% @offers.each do |offer| %>
           <tr>
             <td>
-              <%= image_tag(offer.photo_url(:thumb)) if offer.photo? %>
+              <%= image_tag(offer.photos_urls(:thumb)[0]) if offer.photos? %>
             </td>
             <td>
               <% if offer.status == "for_rent" %>
