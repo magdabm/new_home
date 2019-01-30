@@ -80,7 +80,7 @@
       <br>
 
       <div>
-        <% @offer.photos_urls(:l_thumb).each do |photo| %>
+        <% @offer.photos_urls.each do |photo| %>
             <%= image_tag(photo) if @offer.photos? %>
         <% end %>
       </div>
