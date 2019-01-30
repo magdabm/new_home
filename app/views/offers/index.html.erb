@@ -52,10 +52,10 @@
             <% @best_sale.each do |s| %>
               <tr>
                 <td><strong><%= link_to truncate(s.title, :length => 30), offer_path(s) %></strong></td>
-                <td><%= s.price %> </td>
-                <td><%= s.area %> </td>
-                <td><%= s.factor %> </td>
-                <td> <%= s.district.name %> </td>
+                <td><%= s.price %></td>
+                <td><%= s.area %></td>
+                <td><%= s.factor %></td>
+                <td><%= s.district.name %></td>
               </tr>
             <% end %>
         </table>
@@ -82,7 +82,7 @@
             <th></th>
             <th> Purpose </th>
             <th> Title </th>
-            <th> Price in PLN </th>
+            <th> Price (PLN) </th>
             <th> Area (m<sup>2</sup>) </th>
             <th> District </th>
             <th> Publication date </th>
@@ -111,13 +111,11 @@
             <td> <%= offer.district.name %> </td>
             <td><%= offer.created_at.to_date %></td>
             <td>
-              <%= link_to 'Show details', offer_path(offer) %>
-              <hr>
+              <%= link_to 'Show details', offer_path(offer), style: "color: #0080ff" %>
               <% if offer.user == current_user || current_user&.admin? %>
                 <small>
-                <%= link_to 'Edit', edit_offer_path(offer) %>
-                <hr>
-                <%= link_to 'Delete', offer_path(offer), method: :delete, data: { confirm: "Are you sure you want to delete the offer?" } %>
+                <%= link_to 'Edit', edit_offer_path(offer), style: "color: #666666" %>
+                <%= link_to 'Delete', offer_path(offer), style: "color: #666666", method: :delete, data: { confirm: "Are you sure you want to delete the offer?" } %>
                 </small>
               <% end %>
             <td>
