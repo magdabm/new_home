@@ -32,7 +32,7 @@
        <%= image_tag(photo) if @offer.photos? %>
     <% end %>
     <%= f.file_field :photos, multiple: true, class: "btn btn-light" %>
-    <%= f.hidden_field :photos_cache %>
+    
   </p>
   <p><label>
     <%= f.check_box :remove_photos! %>
