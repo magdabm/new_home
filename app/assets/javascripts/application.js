@@ -31,7 +31,6 @@ window.addEventListener('load', function () {
 			document.getElementById('icon_best').className = "fa fa-angle-double-down"
     }
   })
-
 })
 
 
@@ -49,5 +48,4 @@ window.addEventListener('load', function () {
 			document.getElementById('icon_best').className = "fa fa-angle-double-down"
     }
   })
-
 })

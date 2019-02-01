@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col">
       <button style="border: none; background: none">
-        <%= link_to image_tag("logo_blue_thin_50x135_png.png", size: "338x125"), welcome_index_path, class: "img-responsive" %>
+        <%= link_to image_tag("logo_blue_thin_50x135_png.png", size: "338x125"), offers_path, class: "img-responsive" %>
       </button>
     </div>
     <% if @offer.status == "for_rent" %>
@@ -31,7 +31,7 @@
     </div>
     <br>
     <div class="container div-new border border-success">
-
+      <p style="text-align: right"> Views: <%= @offer.views_count %> </p>
       <table class="table-offer">
         <tr>
           <td class="tb-val td-offer">Purpose:</td>
@@ -80,9 +80,7 @@
       <br>
 
       <div>
-        <% @offer.photos_urls(:l_thumb).each do |photo| %>
-            <%= image_tag(photo) if @offer.photos? %>
-        <% end %>
+        <%= image_tag(@offer.photo_url(:l_thumb)) if @offer.photo? %>
       </div>
 
       <p style="text-align: right"><small>

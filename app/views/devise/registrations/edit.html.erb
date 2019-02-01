@@ -1,0 +1,55 @@
+<div class="container-logos">
+  <div class="mx-auto"; style="width: 345px">
+  <button style="border: none; background: none">
+    <%= link_to image_tag("logo_blue_thin_50x135_png.png", size: "338x125"), welcome_index_path %>
+  </button>
+</div>
+</div>
+
+<div class="container">
+
+  <div class="div-login">
+
+    <div>
+      <h4 style="text-align: center"><b>Edit your profile</b></h4>
+      <br>
+
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+        <%= f.error_notification %>
+
+        <div class="form-inputs">
+          <%= f.input :email, required: true, autofocus: true %>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+          <% end %>
+
+          <%= f.input :password, hint: "leave it blank if you don't want to change it", required: false, input_html: { autocomplete: 'new-password' } %>
+          <%= f.input :password_confirmation, required: false, input_html: { autocomplete: "new-password" } %>
+          <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true, input_html: { autocomplete: "current-password" } %>
+        </div>
+
+        <div class="form-actions", align="center">
+          <%= f.button :submit, "Update", class: "btn btn-light border border-info", style: "font-weight: bold" %>
+        </div>
+      <% end %>
+    </div>
+    <br>
+    <br>
+
+    <div>
+      <p> Unhappy?
+      <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-light btn-sm' %></p>
+    </div>
+    <br>
+
+    <div>
+      <%= link_to "Back", user_path(current_user), class: 'btn btn-light btn-sm' %>
+    </div>
+    <br>
+
+  </div>
+<p><br></p>
+<p><br></p>
+
+</div>

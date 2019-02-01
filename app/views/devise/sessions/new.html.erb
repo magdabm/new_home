@@ -1,0 +1,36 @@
+<div class="container-logos">
+  <div class="mx-auto"; style="width: 345px">
+    <button style="border: none; background: none">
+      <%= link_to image_tag("logo_blue_thin_50x135_png.png", size: "338x125"), welcome_index_path %>
+    </button>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="div-login">
+
+    <h4 style="text-align: center"><b>Log in<b></h4>
+    <br>
+
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+      <div class="form-inputs">
+        <%= f.input :email, required: false, autofocus: true, input_html: { autocomplete: "email" }, class: 'form-control' %>
+        <%= f.input :password, required: false, input_html: { autocomplete: "current-password" } %>
+        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      </div>
+
+      <div class="form-actions", align="center">
+        <%= f.button :submit, "Log in", class: "btn btn-light border border-info", style: "font-weight: bold" %>
+      </div>
+    <% end %>
+    <br>
+
+    <%= render "devise/shared/links" %>
+
+  </div>
+  <p><br></p>
+  <p><br></p>
+
+</div>

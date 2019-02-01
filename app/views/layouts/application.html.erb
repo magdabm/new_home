@@ -20,9 +20,9 @@
   <body>
 
     <div class= "back-img-1">
-
+      
       <% if notice %>
-        <div class="alert alert-info">
+        <div class="alert alert-light">
           <%= notice %>
         </div>
       <% end %>
@@ -31,21 +31,13 @@
         <div class="alert alert-danger">
           <%= alert %>
         </div>
-      <% else %>
-        <div style="padding: 5px 5px 0 15px">
-          <%= link_to 'Sign in', new_user_session_path %>
-          <%= link_to 'Sign up', new_user_registration_path %>
-        </div>
       <% end %>
 
-      <% if user_signed_in? %>
-        <div style="padding: 0 5px 5px 15px">
-          Hello <%= current_user.email %>!
-          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-        </div>
-      <% end %>
+      <%= render 'common/navbar' %>
 
       <%= yield %>
+
+      <%= render 'common/footer' %>
 
     </div>
 

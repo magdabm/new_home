@@ -14,23 +14,9 @@
 
  @import "bootstrap";
  @import "font-awesome";
+ @import "welcome";
 
- 
- .hello-text {
-   font-family: "Palatino Linotype";
-   font-size: 50px;
-   font-style: italic;
-   font-weight: bold;
-   color: #494949;
- }
 
- .index-button {
-   padding: 13px;
-   font-size: 28px;
-   font-weight: bold;
-   border-color: #FFFFFF;
-   border-width: 3px;
- }
 
  .cont {
    margin: 5px auto 40px auto;
@@ -45,6 +31,7 @@
  .back-img-1 {
    background: image-url('back_chair_transp.jpg');
    background-repeat: repeat;
+   background-position: top right;
  }
 
  .div-search {
@@ -111,10 +98,6 @@
    background: rgba(255, 255, 240, 0.8);
  }
 
- .div-index-buttons {
-   margin: 5px 180px 40px 180px;
- }
-
  table.table-offer {
    width: 80%;
    height: 20em;
@@ -134,4 +117,27 @@
  .off-desc {
    font-size: 18px;
    text-align: justify;
+ }
+
+ .div-login {
+   margin: 5px 350px 40px 350px;
+   background: rgba(0, 191, 255, 0.6);
+   padding: 20px 20px 10px 20px;
+ }
+
+ .nav-link {
+
+ }
+
+ .hi-user {
+   font-style: italic;
+   color: White;
+ }
+
+ .bg-my {
+   background-color: #17a2b8;
+ }
+
+ .pre {
+   font-family: "Arial";
  }

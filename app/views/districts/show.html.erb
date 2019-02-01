@@ -11,71 +11,13 @@
   </div>
 </div>
 
-<div>
-
-<div class="container cont">
-  <div id="best">
-    <div class="row">
-      <div class="col-sm"; style="margin-top: 30px">
-        <h4 class="p-2 mb-2 bg-warning text-light"><b>Best 5 apartments for RENT!</b></h4>
-        <table class="table table-sm"; style="font-size: 15px; background: rgba(255, 255, 240, 0.5)">
-          <thead>
-            <tr>
-              <th style="width: 18em"> Title </th>
-              <th> Price (PLN) </th>
-              <th> Area m<sup>2<sup> </th>
-              <th> Factor </th>
-              <th style="width: 11em"> District </th>
-            </tr>
-            <% @best_rent.each do |r| %>
-              <tr>
-                <td><strong><%= link_to truncate(r.title, :length => 30), offer_path(r) %></strong></td>
-                <td><%= r.price %> </td>
-                <td><%= r.area %> </td>
-                <td><%= r.factor %> </td>
-                <td> <%= r.district.name %> </td>
-              </tr>
-            <% end %>
-        </table>
-      </div>
-      <div class="col-sm"; style="margin-top: 30px">
-        <h4 class="p-2 mb-2 bg-warning text-light"><b>Best 5 apartments for SALE!</b></h4>
-        <table class="table table-sm table-best">
-          <thead>
-            <tr>
-              <th style="width: 18em"> Title </th>
-              <th> Price (PLN) </th>
-              <th> Area m<sup>2<sup> </th>
-              <th> Factor </th>
-              <th style="width: 11em"> District </th>
-            </tr>
-            <% @best_sale.each do |s| %>
-              <tr>
-                <td><strong><%= link_to truncate(s.title, :length => 30), offer_path(s) %></strong></td>
-                <td><%= s.price %> </td>
-                <td><%= s.area %> </td>
-                <td><%= s.factor %> </td>
-                <td> <%= s.district.name %> </td>
-              </tr>
-            <% end %>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div>
-    <span style="font-size: 1.8em; color: Gold;">
-      <i class="fa fa-angle-double-up"; id="icon_best"></i>
-    </span>
-    <button class="btn btn-warning text-white"; id="hide_best">Hide best offers</button>
-  </div>
-</div>
 
 <div class="container cont">
 
   <div class="row">
 
     <div class="col-sm-10">
-      <h4 class="p-2 mb-2 bg-info text-white"> All offers of apartments for rent or for sale</h4>
+      <h4 class="p-2 mb-2 bg-info text-white"> Offers of apartments in <%= @district.name %> district: </h4>
       <table class="table"; style="background: rgba(255, 255, 240, 0.8)">
         <thead>
           <tr>
@@ -88,7 +30,7 @@
             <th> Date </th>
           </tr>
         </thead>
-        <% @offers.each do |offer| %>
+        <% @d_offers.each do |offer| %>
           <tr>
             <td>
               <%= link_to image_tag(offer.photo_url(:thumb)), offer_path(offer) if offer.photo? %>
@@ -113,9 +55,6 @@
           </tr>
         <% end %>
       </table>
-      <div class="float-right">
-        <%= paginate @offers, theme: 'twitter-bootstrap-4' %>
-      </div>
     </div>
 
     <div class="col-sm-2">
@@ -158,7 +97,4 @@
   <i class="fa fa-reply-all"></i>
   </span>
   <%= link_to 'Back to the main page', offers_path, class: "btn btn-info btn-lg", style: "opacity: 0.85" %>
-</div>
-<p><br></p>
-
 </div>

@@ -5,14 +5,20 @@
   <%= render 'common/errors', model: @question %>
 
   <%= simple_form_for [@offer, @question] do |f| %>
-     <p>
-        <%= f.input :content, label: 'Question', as: :text, input_html: { style: 'height: 120px' } %><br>
-     </p>
-     <p>
+    <p>
+      <%= f.input :content, label: 'Question', as: :text, input_html: { style: 'height: 120px' } %><br>
+    </p>
+    <% if current_user %>
+      <p>
         <%= f.input :nick, label: 'Your nick', placeholder: current_user.email %><br>
-     </p>
-     <p>
-        <%= f.button :submit, class: "btn btn-success"%>
-     </p>
+      </p>
+    <% else %>
+      <p>
+        <%= f.input :nick, label: 'Your nick' %><br>
+      </p>
+    <% end %>
+      <p>
+        <%= f.button :submit, class: "btn btn-success" %>
+      </p>
   <% end %>
 </div>

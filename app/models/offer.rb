@@ -6,7 +6,7 @@ class Offer < ApplicationRecord
   has_many :questions, dependent: :destroy
   belongs_to :district
 
-  mount_uploaders :photos, PhotoUploader
+  mount_uploader :photo, PhotoUploader
 
   enum status: [ :for_rent, :for_sale ]
 

@@ -21,6 +21,20 @@ class OffersController < ApplicationController
 
   def show
     @question = Question.new
+
+    respond_to do |format|
+      format.html do
+        @offer.increment!(:views_count)
+        render
+      end
+      format.json do
+        render json: {
+          id: @offer.id,
+          title: @offer.title,
+          views_count: @offer.views_count,
+        }
+      end
+    end
   end
 
   def new
@@ -59,7 +73,7 @@ class OffersController < ApplicationController
   private
 
   def offer_params
-    params.require(:offer).permit(:title, :area, :price, :phone, :description, :status, :district_id, :factor, {photos: []}, room_ids: [])
+    params.require(:offer).permit(:title, :area, :price, :phone, :description, :status, :district_id, :factor, :photo, room_ids: [])
   end
 
   def find_offer

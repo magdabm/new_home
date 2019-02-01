@@ -1,3 +1,24 @@
 // Place all the styles related to the Welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.hello-text {
+  font-family: "Palatino Linotype";
+  font-size: 50px;
+  font-style: italic;
+  font-weight: bold;
+  color: #494949;
+}
+
+.index-button {
+  padding: 13px;
+  font-size: 28px;
+  font-weight: bold;
+  border-color: #FFFFFF;
+  border-width: 3px;
+}
+
+ .div-index-buttons {
+   margin: 5px 180px 40px 180px;
+ }

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+
   devise_for :users
+
   root 'welcome#index'
 
   get 'welcome/index'
@@ -7,8 +9,10 @@ Rails.application.routes.draw do
   resources :offers do
     resources :questions
   end
-  resources :rooms
-  resources :districts
+
+  resources :districts, only: %i[show]
+  
+  resources :users, only: %i[show]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

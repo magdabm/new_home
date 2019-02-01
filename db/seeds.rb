@@ -2,6 +2,7 @@
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 # Examples:
+
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
@@ -119,6 +120,12 @@ o_2.district = d_1
 o_3.district = d_8
 o_4.district = d_5
 o_5.district = d_13
+
+o_1.factor = o_1.price_to_area_factor
+o_2.factor = o_2.price_to_area_factor
+o_3.factor = o_3.price_to_area_factor
+o_4.factor = o_4.price_to_area_factor
+o_5.factor = o_5.price_to_area_factor
 
 o_1.save
 o_2.save

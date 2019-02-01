@@ -1,0 +1,41 @@
+<nav class="container navbar navbar-dark bg-my navbar-expand-lg navbar-light">
+  <a><%= link_to "NEW HOME", offers_path, class:'text-light nav-link'%></a>
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a><%= link_to "For Sale", offers_path(status: :for_sale), class:'text-light nav-link' %></a>
+      </li>
+      <li class="nav-item">
+        <a><%= link_to "For Rent", offers_path(status: :for_rent), class:'text-light nav-link' %></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Offers by district
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <% District.all.order(:name).map do |d| %>
+            <a class="dropdown-item"><%= link_to d.name, district_path(d), class:'text-dark' %> </a>
+          <% end %>
+        </div>
+      </li>
+      <li class="nav-item">
+        <% if user_signed_in? %>
+          <a><%= link_to "Your Account", user_path(current_user), class:'text-light nav-link' %></a>
+        <% else %>
+          <a><%= link_to "Create an account", new_user_registration_path, class:'text-light nav-link' %></a>
+        <% end %>
+      </li>
+    </ul>
+    <div class="float-right nav-links no-hyper active">
+      <% if user_signed_in? %>
+        <span class="hi-user">Hello <%= current_user.email %>!&nbsp; &nbsp;</span>
+        <button class="btn btn-sm btn-outline-secondary border border-light" type="button"><%= link_to 'Logout', destroy_user_session_path, method: :delete %></button>
+      <% else %>
+        <button class="btn btn-sm btn-outline-secondary border border-light" type="button"><%= link_to 'Sign in', new_user_session_path %></button>
+        <button class="btn btn-sm btn-outline-secondary border border-light" type="button"><%= link_to 'Sign up', new_user_registration_path %></button>
+      <% end %>
+    </div>
+  </div>
+</nav>

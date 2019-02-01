@@ -1,0 +1,56 @@
+<div class="container-logos">
+  <div class="row">
+    <div class="col">
+      <button style="border: none; background: none">
+        <%= link_to image_tag("logo_blue_thin_50x135_png.png", size: "338x125"), welcome_index_path, class: "img-responsive" %>
+      </button>
+    </div>
+    <div class="col">
+      <center><%= image_tag("forsr_blue_50x228_png.png", size: "570x125", class: "float-right img-responsive", alt: "logo") %></center>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="div-new">
+    <h4><b> Hello, <%= @user.email %> ! </b></h4>
+    <br>
+
+    <p> Here are your's profile informations: </p>
+
+    <table class="table table-sm">
+      <tr>
+        <td class="tb-val td-offer">E-mail:</td>
+        <td> <%= @user.email %> </td>
+      </tr>
+      <tr>
+        <td>Date of account creation:</td>
+        <td><%= @user.created_at.to_date %></td>
+      <tr>
+        <td>Offers you added:</td>
+        <% if !@user.offers.any? %>
+          <td> You haven't add any offers yet. <%= link_to 'Add your first offer!', new_offer_path %></td>
+        <% else %>
+          <td style="padding-top: 12px"><% @user.offers.each_with_index do |o, i| %>
+            <% i += 1 %>
+            <pre class="pre"><%= i %>. <%= link_to o.title, offer_path(o) %></pre>
+          <% end %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>Offers you asked questions:</td>
+        <% if !@user.questions.any? %>
+          <td> You haven't ask any questions yet. </td>
+        <% else %>
+          <td style="padding-top: 12px"><% @user.questions.each_with_index do |q, i| %>
+            <% i = 1 %>
+            <pre class="pre"><%=i %>. <%= link_to q.offer.title, offer_path(q.offer) %></pre>
+          <% end %></td>
+        <% end %>
+      </tr>
+    </table>
+    <h5><%= link_to 'Edit profile / change password',
+    edit_user_registration_path(@user), class: "badge badge-info" %></h5>
+  </div>
+  <p><br></p>
+</div>
