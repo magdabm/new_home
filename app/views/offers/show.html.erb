@@ -1,25 +1,4 @@
-<div class="container-logos">
-  <div class="row">
-    <div class="col">
-      <button style="border: none; background: none">
-        <%= link_to image_tag("logo_blue_thin_50x135_png.png", size: "338x125"), offers_path, class: "img-responsive" %>
-      </button>
-    </div>
-    <% if @offer.status == "for_rent" %>
-      <div class="col float-right">
-        <button class="img-responsive float-right"; style="border: none; background: none">
-          <%= link_to image_tag("for_rent_blue_50x124_png.png", size: "310x125", alt: "logo"), offers_path(status: @offer.status) %>
-        </button>
-      </div>
-    <% else %>
-      <div class="col float-right">
-        <button class="img-responsive float-right"; style="border: none; background: none">
-          <%= link_to image_tag("for_sale_blue_50x122_png.png", size: "305x125", alt: "logo"), offers_path(status: @offer.status) %>
-        </button>
-      </div>
-    <% end %>
-  </div>
-</div>
+<%= render 'common/logo_nh_diff' %>
 
 <div>
 
