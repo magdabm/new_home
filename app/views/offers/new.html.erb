@@ -4,12 +4,6 @@
   <h4 class="p-3 mb-2 bg-success text-white"><strong>Add your offer:</strong></h4>
   <%= render 'form' %>
 </div>
+<p><br></p>
 
-<div class="container">
-  <br>
-  <span style="font-size: 1.5em; color: CadetBlue;">
-    <i class="fa fa-reply-all"></i>
-  </span>
-  <%= link_to 'Back to all offers', offers_path, class: "btn btn-info btn-lg" %>
-  <p><br></p>
-</div>
+<%= render 'common/back' %>
