@@ -1,9 +1,9 @@
 <nav class="container navbar navbar-dark bg-my navbar-expand-lg navbar-light">
-  <a><%= link_to "NEW HOME", offers_path, class:'text-light nav-link'%></a>
+  <a><%= link_to image_tag("small_25x28_bb.png", size: "84x75"), welcome_index_path %></a>
 
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="padding-left: 20px">
     <ul class="navbar-nav mr-auto">
+      <li></li>
       <li class="nav-item">
         <a><%= link_to "For Sale", offers_path(status: :for_sale), class:'text-light nav-link' %></a>
       </li>

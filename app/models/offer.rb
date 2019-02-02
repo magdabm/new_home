@@ -25,7 +25,7 @@ class Offer < ApplicationRecord
 
 
   def price_to_area_factor
-    return ratio = (price/area.to_f).round(2) if price
+    return factor = (price/area.to_f).round(2)
   end
 
   def has_rooms?

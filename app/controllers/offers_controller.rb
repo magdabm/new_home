@@ -58,6 +58,8 @@ class OffersController < ApplicationController
 
   def update
     if @offer.update(offer_params)
+      @offer.factor = @offer.price_to_area_factor
+      @offer.save
       redirect_to @offer
       flash[:notice] = "Advertisement has been succesfully updated in our database."
     end
