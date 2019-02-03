@@ -11,12 +11,8 @@ class OffersController < ApplicationController
     @offers = @offers.where(status: params[:status]) if params[:status].present?
     # or @offers = @offers.select { |o| o.status.include? params[:status] } if params[:status].present?
     @offers = @offers.where(district_id: params[:district]) if params[:district].present?
-    @best_sale = @offers.best_sale
-    @best_rent = @offers.best_rent
-    unpaged_offers = @offers.best_sale.except(:limit, :offset) || @offers.best_rent.except(:limit, :offset)
-    if @offers.count == 0
-      flash[:alert] = "Sorry, we don't have offers that meet your criteria..."
-    end
+    @best_sale = Offer.all.best_sale
+    @best_rent = Offer.all.best_rent
   end
 
   def show
