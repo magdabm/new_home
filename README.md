@@ -1,6 +1,7 @@
 # README
 
 The new_home app is an website when users can add offers of apartments for sale and for rent.
+
 https://new-home-app.herokuapp.com/
 
 ## Ruby version
