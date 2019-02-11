@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The new_home app is an website when users can add offers of apartments for sale and for rent.
+https://new-home-app.herokuapp.com/
 
-Things you may want to cover:
+## Ruby version
+2.5.3
 
-* Ruby version
+## Rails version
+5.2.2
 
-* System dependencies
+## Database
+PostgreSQL
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Used additional Gems
+  bootstrap 4.0
+  devise
+  carrierwave 1.0
+  mini_magick
+  cloudinary
+  simple_form
+  kaminari
+  bootstrap4-kaminari-views
+  font-awesome-rails
+  dotenv-rails
