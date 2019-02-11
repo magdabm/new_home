@@ -12,14 +12,17 @@ https://new-home-app.herokuapp.com/
 ## Database
 PostgreSQL
 
-## Used additional Gems
-  bootstrap 4.0
-  devise
-  carrierwave 1.0
-  mini_magick
-  cloudinary
-  simple_form
-  kaminari
-  bootstrap4-kaminari-views
-  font-awesome-rails
-  dotenv-rails
+## Used additional gems
+  * bootstrap 4.0
+  * devise
+  * carrierwave 1.0
+  * mini_magick
+  * cloudinary
+  * simple_form
+  * kaminari
+  * bootstrap4-kaminari-views
+  * font-awesome-rails
+  * dotenv-rails
+
+## Note
+The app is still under construction!
